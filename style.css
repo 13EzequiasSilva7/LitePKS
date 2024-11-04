@@ -58,3 +58,10 @@ body {
 .button { transition-delay: 0.6s; }
 .button { transition-delay: 0.8s; }
 .button { transition-delay: 1.0s; }
+
+.button:hover {
+    background-color: #ffa500;
+}
+    .button:active {
+    background-color: #444;
+    }
