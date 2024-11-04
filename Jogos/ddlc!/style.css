@@ -27,6 +27,22 @@ body {
     font-size: 17px;
 }
 
+.logo {
+    width: 100px; /* Ajuste a largura conforme necessário */
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateY(50px); /* Move a logo para baixo inicialmente */
+    animation: logoAnimation 1s forwards; /* Aplica a animação */
+    animation-delay: 25s; /* Atraso de 15 segundos antes de iniciar a animação */
+}
+
+/* Animação da logo */
+@keyframes logoAnimation {
+    to {
+        opacity: 1; /* Torna a logo visível */
+        transform: translateY(0); /* Move a logo para sua posição original */
+    }
+}
+
 @keyframes drop {
     to {
         opacity: 1;
