@@ -13,6 +13,7 @@ body {
     align-items: center;
     height: 40vh;
     overflow: hidden;
+    text-align: center;
 }
 
 .container {
@@ -20,27 +21,12 @@ body {
 }
 
 .welcome-text span {
+    margin-top: 100px;
     display: inline-block;
     opacity: 0;
     transform: translateY(-50px);
     animation: drop 1.2s forwards;
     font-size: 17px;
-}
-
-.logo {
-    width: 60px; /* Ajuste a largura conforme necessário */
-    opacity: 0; /* Inicialmente invisível */
-    transform: translateY(50px); /* Move a logo para baixo inicialmente */
-    animation: logoAnimation 1s forwards; /* Aplica a animação */
-    animation-delay: 20s; /* Atraso de 15 segundos antes de iniciar a animação */
-}
-
-/* Animação da logo */
-@keyframes logoAnimation {
-    to {
-        opacity: 1; /* Torna a logo visível */
-        transform: translateY(0); /* Move a logo para sua posição original */
-    }
 }
 
 @keyframes drop {
@@ -57,15 +43,17 @@ body {
 }
 
 .button {
-    background-color: #444;
+    background-color: #ff69b4; /* Rosa fofo */
     color: #fff;
-    padding: 5px 10px;
-    border: none;
+    padding: 1px 2px;
+    border: 2px solid #c71585; /* Rosa escuro */
+    border-radius: 5px; /* Bordas arredondadas, opcional */
     font-size: 14px;
     cursor: pointer;
     opacity: 0;
     transform: translateY(50px);
-    transition: opacity 1s, transform 1s, background-color 0.3s;
+    transition: opacity 1s, transform 1s, background-color 0.3s, border-color 0.3s; /* Inclua border-color nas transições */
+    flex-direction: column;
 }
 
 /* Transições de atraso para cada botão */
@@ -77,10 +65,16 @@ body {
 
 /* Cor de fundo ao passar o mouse ou tocar no botão */
 .button:hover {
-    background-color: #ff1493; /* Rosa */
+    background-color: #ff1493; /* Rosa ao passar o mouse */
+    border-color: #ff69b4; /* Mantém a borda rosa fofo ao passar o mouse */
 }
 
 /* Cor de fundo quando o mouse ou o toque é liberado */
 .button:active {
     background-color: #444; /* Preto */
+    border-color: #c71585; /* Rosa escuro */
 }
+
+.icone {
+    width: 80px;
+} 
