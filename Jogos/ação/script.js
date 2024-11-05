@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             button.style.transform = `translate(0, 0)`; // Mover para a posição final
             button.style.transition = "transform 0.5s, opacity 0.5s"; // Suavizar a transição
-            button.style.animation = "pulse 1s infinite"; // Efeito de "pulsar"
+            button.classList.add("pulse-animation"); // Adiciona classe de animação
         }, 100);
     });
 
@@ -49,9 +49,28 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         createParticles();
     }, totalDuration);
+
+    // Adiciona um evento de clique para criar novas partículas
+    document.addEventListener("click", createInteractionParticles);
 });
 
-// Função para criar partículas
+// Função para gerar uma cor vermelha aleatória
+function getRandomRedColor() {
+    const redShades = [
+        'rgba(255, 0, 0, 0.8)',   // Vermelho puro
+        'rgba(220, 20, 60, 0.8)',  // Vermelho escuro
+        'rgba(255, 99, 71, 0.8)',  // Tomate
+        'rgba(255, 127, 80, 0.8)', // Coral
+        'rgba(255, 182, 193, 0.8)', // Rosa claro
+        'rgba(178, 34, 34, 0.8)',   // Vermelho escuro 2
+        'rgba(255, 69, 0, 0.8)',    // Vermelho laranja
+        'rgba(255, 0, 255, 0.8)',   // Magenta
+        'rgba(205, 92, 92, 0.8)'    // Vermelho claro
+    ];
+    return redShades[Math.floor(Math.random() * redShades.length)];
+}
+
+// Função para criar partículas existentes
 function createParticles() {
     const numParticles = 50;
     const container = document.body;
@@ -61,7 +80,7 @@ function createParticles() {
         particle.style.position = 'absolute';
         particle.style.width = '10px';
         particle.style.height = '10px';
-        particle.style.backgroundColor = 'rgba(255, 0, 0, 0.8)'; // Cor vermelha
+        particle.style.backgroundColor = getRandomRedColor(); // Cor vermelha aleatória
         particle.style.borderRadius = '50%';
         particle.style.pointerEvents = 'none';
         particle.style.left = '50%';
@@ -99,13 +118,73 @@ function createParticles() {
     }
 }
 
+// Função para criar partículas de interação
+function createInteractionParticles(event) {
+    const numInteractionParticles = 20;
+    const container = document.body;
+
+    for (let i = 0; i < numInteractionParticles; i++) {
+        const particle = document.createElement('div');
+        particle.style.position = 'absolute';
+        particle.style.width = '5px'; // Tamanho da nova partícula
+        particle.style.height = '5px'; // Tamanho da nova partícula
+        particle.style.backgroundColor = getRandomRedColor(); // Cor vermelha aleatória
+        particle.style.borderRadius = '50%';
+        particle.style.pointerEvents = 'none';
+
+        // Posição inicial aleatória em torno do ponto clicado
+        const x = event.clientX + (Math.random() - 0.5) * 100; // Variar em torno do ponto de clique
+        const y = event.clientY + (Math.random() - 0.5) * 100;
+
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+
+        container.appendChild(particle);
+
+        // Angulo e velocidade aleatórios
+        const angle = Math.random() * 2 * Math.PI;
+        const speed = Math.random() * 3 + 2;
+
+        // Animação da partícula de interação
+        const animationDuration = 1000; // Duração mais curta
+        const startTime = performance.now();
+
+        function animate() {
+            const currentTime = performance.now();
+            const elapsedTime = currentTime - startTime;
+            const progress = Math.min(elapsedTime / animationDuration, 1);
+
+            // Movimento para fora do ponto de clique
+            const xOffset = Math.cos(angle) * speed * progress * 80;
+            const yOffset = Math.sin(angle) * speed * progress * 80;
+
+            particle.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            particle.style.opacity = 1 - progress;
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                particle.remove();
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+}
+
 // Animação "pulse" para os botões
 const style = document.createElement("style");
 style.textContent = `
 @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.1); } /* Aumenta um pouco para efeito de ação */
+    50% { transform: scale(1.05); } /* Aumenta um pouco para efeito de ação */
     100% { transform: scale(1); }
+}
+
+.pulse-animation {
+    animation: pulse 1.2s ease-in-out infinite; /* Repetição infinita */
+    background-color: #8B0000; /* Cor vermelho escuro */
+    border: 2px solid #660000; /* Borda escura */
 }
 `;
 document.head.appendChild(style);
