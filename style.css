@@ -28,6 +28,7 @@ body {
 }
 
 .logo {
+    margin-top: 200px;
     width: 100px; /* Ajuste a largura conforme necessário */
     opacity: 0; /* Inicialmente invisível */
     transform: translateY(50px); /* Move a logo para baixo inicialmente */
