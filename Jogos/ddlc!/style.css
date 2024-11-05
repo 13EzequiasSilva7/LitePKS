@@ -28,11 +28,11 @@ body {
 }
 
 .logo {
-    width: 100px; /* Ajuste a largura conforme necessário */
+    width: 60px; /* Ajuste a largura conforme necessário */
     opacity: 0; /* Inicialmente invisível */
     transform: translateY(50px); /* Move a logo para baixo inicialmente */
     animation: logoAnimation 1s forwards; /* Aplica a animação */
-    animation-delay: 25s; /* Atraso de 15 segundos antes de iniciar a animação */
+    animation-delay: 20s; /* Atraso de 15 segundos antes de iniciar a animação */
 }
 
 /* Animação da logo */
@@ -83,20 +83,4 @@ body {
 /* Cor de fundo quando o mouse ou o toque é liberado */
 .button:active {
     background-color: #444; /* Preto */
-}
-
-.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.fade-in-image {
-    opacity: 0;
-    visibility: visible;
-    transition: opacity 2s; /* Efeito de fade-in em 2 segundos */
-    width: 60px;
-}
-
-.fade-in-image.show {
-    opacity: 1; /* Tornar a imagem visível */
 }
