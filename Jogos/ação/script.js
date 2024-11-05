@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             button.style.transform = `translate(0, 0)`; // Mover para a posição final
             button.style.transition = "transform 0.5s, opacity 0.5s"; // Suavizar a transição
-            button.classList.add("pulse-animation"); // Adiciona classe de animação
+            button.classList.add("button-glow"); // Adiciona classe de animação glow
         }, 100);
     });
 
@@ -172,19 +172,24 @@ function createInteractionParticles(event) {
     }
 }
 
-// Animação "pulse" para os botões
+// Animação "glow" para os botões
 const style = document.createElement("style");
 style.textContent = `
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); } /* Aumenta um pouco para efeito de ação */
-    100% { transform: scale(1); }
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; }
+    50% { box-shadow: 0 0 20px #ff3333, 0 0 30px #ff3333, 0 0 40px #ff3333; }
+    100% { box-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; }
 }
 
-.pulse-animation {
-    animation: pulse 1.2s ease-in-out infinite; /* Repetição infinita */
+.button-glow {
+    animation: glow 2s ease-in-out infinite;
     background-color: #8B0000; /* Cor vermelho escuro */
     border: 2px solid #660000; /* Borda escura */
+    color: #fff; /* Cor do texto branco */
 }
 `;
 document.head.appendChild(style);
+
+buttons.forEach((button) => {
+    button.classList.add("button-glow"); // Adiciona a nova animação glow aos botões
+});

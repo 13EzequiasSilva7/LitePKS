@@ -41,6 +41,7 @@ body {
 }
 
 .button {
+    width: 85px;
     background-color: #444;
     color: #fff;
     padding: 5px 10px;
@@ -50,6 +51,8 @@ body {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1s, transform 1s;
+    display: flex;
+    flex-direction: column;
 }
 
 .button { transition-delay: 0.2s; }
@@ -64,3 +67,8 @@ body {
     .button:active {
     background-color: #444;
     }
+
+.icone{
+     width: 50px;
+    
+}
