@@ -21,7 +21,6 @@ body {
 }
 
 .welcome-text span {
-    margin-top: 100px;
     display: inline-block;
     opacity: 0;
     transform: translateY(-50px);
