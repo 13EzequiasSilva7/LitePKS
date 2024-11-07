@@ -189,7 +189,3 @@ style.textContent = `
 }
 `;
 document.head.appendChild(style);
-
-buttons.forEach((button) => {
-    button.classList.add("button-glow"); // Adiciona a nova animação glow aos botões
-});
