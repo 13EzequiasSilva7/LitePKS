@@ -11,10 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
         span.style.animationDelay = `${index * 0.07}s`; // Ajuste de tempo para efeito mais lento
         welcomeText.appendChild(span);
     });
-
-    export default function handler(req, res) {
-  res.status(200).end('Hello Cron!');
-    }
     
     // Animação dos botões
     const buttons = document.querySelectorAll(".button");
