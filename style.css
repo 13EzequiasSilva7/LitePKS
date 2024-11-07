@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 15hv;
     overflow: hidden;
 }
 
@@ -29,7 +29,7 @@ body {
 
 .logo {
     margin-bottom: 20px;
-    width: 85px; /* Ajuste a largura conforme necessário */
+    width: 100px; /* Ajuste a largura conforme necessário */
     opacity: 0; /* Inicialmente invisível */
     transform: translateY(50px); /* Move a logo para baixo inicialmente */
     animation: logoAnimation 1s forwards; /* Aplica a animação */
