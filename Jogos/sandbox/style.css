@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh;
+    height: 10hv;
     overflow: hidden;
 }
 
@@ -68,5 +68,5 @@ body {
     }
 
 .icone {
-    width: 60px;
+    width: 75px;
 }
